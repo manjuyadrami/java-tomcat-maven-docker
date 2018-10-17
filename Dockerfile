@@ -1,4 +1,5 @@
 FROM centos:latest
+ENV GOSU_VERSION 1.10
 RUN yum update && \
     yum upgrade -y && \
     yum install -y curl && \
