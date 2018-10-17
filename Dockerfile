@@ -1,7 +1,7 @@
 FROM centos:latest
 ENV GOSU_VERSION 1.10
-RUN yum clean all \
-    yum update && \
+RUN set -x 
+RUN yum update && \
     yum upgrade -y && \
     yum install -y curl && \
     yum install -y  software-properties-common && \
