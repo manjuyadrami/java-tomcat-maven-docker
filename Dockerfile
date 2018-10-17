@@ -6,7 +6,7 @@ RUN yum update -y && \
     yum install -y curl && \
     yum install -y  software-properties-common && \
     yum-repository -y ppa:webupd8team/java -y && \
-    yum update && \
+    yum update -y && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     yum install -y oracle-java8-installer && \
     yum clean -y 
