@@ -1,14 +1,13 @@
-FROM alpine:latest
-RUN set -x 
-RUN yum update -y && \
-    yum upgrade -y && \
-    yum install -y curl && \
-    yum install -y  software-properties-common && \
-    yum-repository -y ppa:webupd8team/java -y && \
-    yum update -y && \
+FROM ubuntu:16.04
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y curl && \
+    apt-get install -y  software-properties-common && \
+    add-apt-repository ppa:webupd8team/java -y && \
+    apt-get update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    yum install -y oracle-java8-installer && \
-    yum clean -y 
+    apt-get install -y oracle-java8-installer && \
+    apt-get clean
 RUN groupadd tomcat
 RUN useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 RUN cd /tmp
