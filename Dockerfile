@@ -1,13 +1,13 @@
 FROM ubuntu:16.04
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y curl && \
-    apt-get install -y  software-properties-common && \
-    add-apt-repository ppa:webupd8team/java -y && \
-    apt-get update && \
+RUN yum update && \
+    yum upgrade -y && \
+    yum install -y curl && \
+    yum install -y  software-properties-common && \
+    yum-repository ppa:webupd8team/java -y && \
+    yum update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java8-installer && \
-    apt-get clean
+    yum install -y oracle-java8-installer && \
+    yum clean
 RUN groupadd tomcat
 RUN useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 RUN cd /tmp
