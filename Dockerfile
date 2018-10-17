@@ -1,11 +1,11 @@
 FROM centos:latest
 ENV GOSU_VERSION 1.10
 RUN set -x 
-RUN yum update && \
+RUN yum update -y && \
     yum upgrade -y && \
     yum install -y curl && \
     yum install -y  software-properties-common && \
-    yum-repository ppa:webupd8team/java -y && \
+    yum-repository -y ppa:webupd8team/java -y && \
     yum update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     yum install -y oracle-java8-installer && \
