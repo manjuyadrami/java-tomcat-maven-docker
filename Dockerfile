@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM centos:latest
 RUN yum update && \
     yum upgrade -y && \
     yum install -y curl && \
