@@ -9,7 +9,7 @@ RUN yum update -y && \
     yum update && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     yum install -y oracle-java8-installer && \
-    yum clean
+    yum clean -y 
 RUN groupadd tomcat
 RUN useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 RUN cd /tmp
