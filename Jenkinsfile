@@ -1,5 +1,5 @@
 node(){
-#checkout scm    
+//checkout scm    
          
          stage('compile') {   
             mvn clean package -Dmy.variable=$VERSION
