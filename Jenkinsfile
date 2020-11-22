@@ -1,7 +1,8 @@
 node(){
-checkout scm    
+#checkout scm    
          
-         stage('compile') {         
+         stage('compile') {   
+            mvn clean package -Dmy.variable=$VERSION
          echo "compile"
         }
          stage('test') {         
