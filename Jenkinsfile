@@ -3,7 +3,7 @@ node(){
          
          stage('compile') {   
                   sh'''
-            mvn clean package -Dmy.variable=$VERSION
+            mvn clean package -Dmy.variable=${env.VERSION}
          echo "compile"
          '''
         }
