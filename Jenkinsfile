@@ -2,7 +2,7 @@ node(){
 checkout scm         
 stage('Maven Build') {         
          sh '''
-                 mvn package
+                 mvn package '${version}'
                 
             '''
         }
