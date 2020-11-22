@@ -2,8 +2,10 @@ node(){
 //checkout scm    
          
          stage('compile') {   
+                  sh'''
             mvn clean package -Dmy.variable=$VERSION
          echo "compile"
+         '''
         }
          stage('test') {         
          echo "test"
