@@ -53,4 +53,7 @@
     <url>http://34.121.67.200:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
 </distributionManagement>
+   <properties>
+        <version>1.0</version>
+    </properties>
 </project>
