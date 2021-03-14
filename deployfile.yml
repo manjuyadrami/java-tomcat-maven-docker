@@ -3,10 +3,17 @@
   become: true
   become_user: root
   tasks:
+    - name: Creates directory
+      file:
+        path: /home/skylab_priyadarshini/tomcat8.1
+        state: directory
+        owner: root
+        group: root
+        mode: 0775
     - name: Download tomcat
       get_url:
         url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.64/bin/apache-tomcat-8.5.64.tar.gz
-        dest: /home/skylab_priyadarshini/tomcat8.1
+        dest: /var/jenkins/workspace/tomcat8.1
         mode: 0755        
     - name: Extract tomcat tar.gz
       unarchive:
