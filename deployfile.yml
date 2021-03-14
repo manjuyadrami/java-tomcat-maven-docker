@@ -2,7 +2,18 @@
 - hosts: deploy-tomcat
   become: true
   become_user: root
-  tasks:   
+  tasks:
+    - name: Download tomcat
+      get_url:
+        url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.64/bin/apache-tomcat-8.5.64.tar.gz
+        dest: /home/skylab_priyadarshini/tomcat8.1
+        mode: 0440
+    - name: Extract tomcat tar.gz
+      unarchive:
+         src: /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64.tar.gz
+         dest: /home/skylab_priyadarshini/tomcat8.1
     - name: Copy the playbook
-      copy: src=/var/lib/jenkins/workspace/ansible-pipleline/target/myapp.war dest=/home/skylab_priyadarshini/tomcat8/webapps
+      copy: src=/var/lib/jenkins/workspace/ansible-pipleline/target/myapp.war dest=/home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/webapps
+    - name: Run Tomcat
+      shell: cd /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/bin && ./startup.sh
     
