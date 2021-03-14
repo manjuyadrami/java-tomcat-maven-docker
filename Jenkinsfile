@@ -1,9 +1,9 @@
 pipeline {
     agent any   
- parameters {
-    //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-	 properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: '', description: '', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH')])])
-  }
+	properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: '', description: '', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH')])])
+	 /** parameters {
+	    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'	 
+	  }**/
     stages {
 	    stage('Checkout') {           	
             steps {
