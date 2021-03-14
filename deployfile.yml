@@ -26,5 +26,6 @@
     - name: Copy the playbook
       copy: src=/var/lib/jenkins/workspace/ansible-pipleline/target/myapp.war dest=/home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/webapps
     - name: Run Tomcat
-      shell: cd /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/bin && ./startup.sh
+     # shell: cd /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/bin && ./startup.sh
+      command: ./home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/bin/startup.sh
     
