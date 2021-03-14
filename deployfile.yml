@@ -7,7 +7,7 @@
       get_url:
         url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.64/bin/apache-tomcat-8.5.64.tar.gz
         dest: /home/skylab_priyadarshini/tomcat8.1
-        mode: 0440
+        mode: 777
     - name: Extract tomcat tar.gz
       unarchive:
          src: /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64.tar.gz
