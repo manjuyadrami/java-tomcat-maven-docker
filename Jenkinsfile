@@ -24,10 +24,12 @@ pipeline {
         stage('Ansible Deploy') {           	
             steps {
                script{              
-                sh """
+               /** sh """
 		  ansible --version
 		  ansible-playbook deployfile.yml
                 """
+		**/
+		       ansiblePlaybook credentialsId: 'b0fb037c-3cc2-4fcd-bc88-f75c0306df81', playbook: 'deployfile.yml'
 	       }
             }
         }
