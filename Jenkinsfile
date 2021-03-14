@@ -29,7 +29,7 @@ pipeline {
 		  ansible-playbook deployfile.yml
                 """
 		**/
-		       ansiblePlaybook credentialsId: 'b0fb037c-3cc2-4fcd-bc88-f75c0306df81', playbook: 'deployfile.yml'
+		      ansiblePlaybook become: true, credentialsId: 'root-credentials', playbook: 'deployfile.yml'
 	       }
             }
         }
