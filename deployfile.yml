@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: deploy-tomcat
   become: true
   become_user: root
   tasks:   
