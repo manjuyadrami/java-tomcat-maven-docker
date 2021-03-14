@@ -29,7 +29,8 @@ pipeline {
 		  ansible-playbook deployfile.yml
                 """
 		**/
-		      ansiblePlaybook become: true, credentialsId: 'root-credentials', playbook: 'deployfile.yml'
+		      //ansiblePlaybook become: true, credentialsId: 'root-credentials', playbook: 'deployfile.yml'
+		       ansiblePlaybook credentialsId: 'root-credentials', inventory: 'dev-hosts', playbook: 'deployfile.yml'
 	       }
             }
         }
