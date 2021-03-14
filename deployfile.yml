@@ -13,14 +13,16 @@
     - name: Download tomcat
       get_url:
         url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.64/bin/apache-tomcat-8.5.64.tar.gz
-        dest: //home/skylab_priyadarshini/tomcat8.1
+        dest: /home/skylab_priyadarshini/tomcat8.1
         mode: 0755        
-    - name: Extract tomcat tar.gz
-      unarchive:
-         src: /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64.tar.gz
-         dest: /home/skylab_priyadarshini/tomcat8.1
-         mode: 0755
-         recurse: yes
+   # - name: Extract tomcat tar.gz
+   #   unarchive:
+   #      src: /home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64.tar.gz
+   #      dest: /home/skylab_priyadarshini/tomcat8.1
+   #      mode: 0755
+   #      recurse: yes
+    - name: Extracting the tar file
+      shell: cd /home/skylab_priyadarshini/tomcat8.1 && tar -xvzf apache-tomcat-8.5.64.tar.gz
     - name: Copy the playbook
       copy: src=/var/lib/jenkins/workspace/ansible-pipleline/target/myapp.war dest=/home/skylab_priyadarshini/tomcat8.1/apache-tomcat-8.5.64/webapps
     - name: Run Tomcat
