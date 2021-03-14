@@ -1,13 +1,14 @@
 pipeline {
     agent any   
  parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+    //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+	 properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: '', description: '', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH')])])
   }
     stages {
 	    stage('Checkout') {           	
             steps {
-             git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
-		
+             //git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
+	    checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '${params.BRANCH}"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git']]]
             }
         }
 	    stage('Build and Package') {           	
