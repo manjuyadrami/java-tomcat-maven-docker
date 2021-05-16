@@ -61,16 +61,21 @@ under the License.
     <username>admin</username>
     <password>admin123</password>
   </server>
+ <server>
+    <id>16th-may</id>
+    <username>admin</username>
+    <password>admin123</password>
+  </server>
   </servers>
 
-  <!--mirrors>
+  <mirrors>
     <mirror>
-        <id>repoMirror</id>
-        <name>Our mirror for Maven repository</name>
-        <url>C:\Users\senapati\.m2\repository\</url>
-        <mirrorOf>*</mirrorOf>
+      <id>16th-may</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Maven Central</name>
+      <url>http://35.225.212.245:8081/repository/16th-may/</url>
     </mirror>
-</mirrors-->
+</mirrors>
 
  <repositories>
     <repository>
