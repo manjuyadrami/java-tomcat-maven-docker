@@ -1,12 +1,13 @@
 pipeline {
     agent any   
- parameters {
+/** parameters {
     gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-  }
+  }**/
     stages {
 	    stage('Checkout') {           	
             steps {
-             git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
+            // git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
+		    checkout scm
 		
             }
         }
@@ -15,7 +16,7 @@ pipeline {
             //  withMaven(maven: 'maven-3.6.3') {           
 		 script{
 		    sh """
-		     mvn clean package
+		     mvn clean test
                 """
 		 }
 	    //}
@@ -25,9 +26,10 @@ pipeline {
             steps {
                script{              
                 sh """
-		  ansible --version
-		  ansible-playbook deployfile.yml
-                """
+		 // ansible --version
+		 // ansible-playbook deployfile.yml
+                echo "inside checkout scm branch _1"
+		"""
 	       }
             }
         }
