@@ -7,7 +7,7 @@ pipeline {
 	    stage('Checkout') {           	
             steps {
             // git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
-		
+		checkout scm
             }
         }
 	    stage('Build and Package') {           	
