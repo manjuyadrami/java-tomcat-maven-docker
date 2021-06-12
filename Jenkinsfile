@@ -9,7 +9,7 @@ pipeline {
             //  withMaven(maven: 'maven-3.6.3') {           
 		 script{
 		    sh """
-		    // mvn clean test
+		   
 		    echo "Build"
                 """
 		 }
@@ -20,8 +20,8 @@ pipeline {
             steps {
                script{              
                 sh """
-		 // ansible --version
-		 // ansible-playbook deployfile.yml
+		 # ansible --version
+		 # ansible-playbook deployfile.yml
                 echo "inside checkout scm branch _1"
 		"""
 	       }
