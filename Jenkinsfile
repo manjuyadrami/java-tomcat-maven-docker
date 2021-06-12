@@ -8,7 +8,7 @@ pipeline {
             steps {
             // git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
 		//checkout scm
-		    sh "dir"
+		    sh "ls la"
             }
         }
 	    stage('Build and Package') {           	
@@ -16,7 +16,8 @@ pipeline {
             //  withMaven(maven: 'maven-3.6.3') {           
 		 script{
 		    sh """
-		     mvn clean test
+		   #  mvn clean test
+		   echo "Build package"
                 """
 		 }
 	    //}
@@ -26,8 +27,8 @@ pipeline {
             steps {
                script{              
                 sh """
-		 // ansible --version
-		 // ansible-playbook deployfile.yml
+		 # ansible --version
+		 # ansible-playbook deployfile.yml
                 echo "inside checkout scm branch"
 		"""
 	       }
