@@ -14,13 +14,13 @@ pipeline {
         }
 	   stage('build'){
 	   steps{
-	       scipt{
+	       script{
     		   configFileProvider (  
     			   [configFile(fileId: 'manh-artifactory-global', variable: 'MAVEN_SETTINGS')]) {
     				   sh "'mvn' -s \"$MAVEN_SETTINGS\" -Dmaven.test.skip=true clean deploy -U -B"
     		   }
 	       }   
-		}
-     }  
+          }
+      }  
     }  
 }
