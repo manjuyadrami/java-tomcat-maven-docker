@@ -1,32 +1,26 @@
 pipeline {
-    agent{ label "$NODE" }
- parameters {
-  //  gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-    // parameters { string(name: 'NODE', defaultValue: 'some_node', description: '') }
-   gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH',string(name: 'NODE', defaultValue: 'master', description: '')
-
-  }
-    stages {
+   agent { label "$NODE" }
+      parameters {
+         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH_TAG'
+         choice(choices: ['master', 'test'], name: 'NODE')
+      }
+  
+    stages{
 	    stage('Checkout') {           	
             steps {
              git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
 		
             }
         }
-	    stage('Build and Package') {           	
-            steps {
-                    
-		 script{
-		    sh """
-		    ls
-		   #  mvn clean package
-		   echo  "MAster"
-		   ls -la               
-		   """
-		 }
-	 
-            }
-        }
-       
+	   stage('build'){
+	   steps{
+	       scipt{
+    		   configFileProvider (  
+    			   [configFile(fileId: 'manh-artifactory-global', variable: 'MAVEN_SETTINGS')]) {
+    				   sh "'mvn' -s \"$MAVEN_SETTINGS\" -Dmaven.test.skip=true clean deploy -U -B"
+    		   }
+	       }   
+		}
+     }  
     }  
 }
