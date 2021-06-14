@@ -6,12 +6,12 @@ pipeline {
       }
   
     stages{
-	    stage('Checkout') {           	
+	/**    stage('Checkout') {           	
             steps {
              git branch: "${params.BRANCH}", url: 'https://github.com/csenapati12/java-tomcat-maven-docker.git'
 		
             }
-        }
+        }**/
 	   stage('build'){
 	   steps{
 	       script{
