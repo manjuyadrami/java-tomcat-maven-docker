@@ -1,0 +1,9 @@
+node(){
+    stage("clone"){
+        checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjuyadrami/java-tomcat-maven-docker.git']])
+    }
+    stage("maven"){
+        sh "pwd"
+        sh "/Users/sarvam/Documents/maven-3.9.6/bin/mvn clean package"
+    }
+}
