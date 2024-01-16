@@ -16,12 +16,10 @@ node(){
 
            sh '''status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/myapp/)
    if [ "$status_code" -eq 200 ] ; then
-        echo "Jenkins is working fine $status_code" 
+        echo "App is working fine $status_code" 
    else
-       echo "Jenkins is not running and starting jenkins"
-       service jenkins start
-       cd /var/log/jenkins
-       cat  jenkins.log
+       echo "App is not running and starting jenkins"
+      
     fi
 '''    
 }
