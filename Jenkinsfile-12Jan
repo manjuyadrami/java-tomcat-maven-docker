@@ -24,6 +24,7 @@ node(){
 '''    
 }**/
 stage("verify"){
+sh "chmod 777 statuscode.sh"
 sh "./statuscode.sh"
 }
 }
