@@ -17,8 +17,8 @@ RUN gzip -V
 RUN tar -xvzf apache-tomcat-9.0.85.tar.gz -C /opt/tomcat --strip-components=1
 RUN cd /opt/tomcat
 RUN chgrp -R tomcat /opt/tomcat
-docker cp "/Users/sarvam/.jenkins/workspace/maven_docker_project/target/myapp.war" "/opt/tomcat/webapps"
-#ADD target/myapp.war /opt/tomcat/webapps
+
+ADD target/myapp.war /opt/tomcat/webapps
 #RUN chown -R tomcat conf/ webapps/ work/ temp/ logs/
 #RUN update-java-alternatives -l
 ENV JAVA_HOME /usr
