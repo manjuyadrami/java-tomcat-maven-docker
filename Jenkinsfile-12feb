@@ -9,7 +9,7 @@ node(){
     }
     stage("copy artifacts"){
         
-        sh '''cd /Users/sarvam/.jenkins/workspace/Java_Pipeline100/target
+        sh '''cd /Users/sarvam/.jenkins/workspace/gitparameterizedtest/target
         cp *.war /Users/sarvam/downloads/apache-tomcat-10.1.17/webapps'''
     }
   /**  stage("Start application server"){
