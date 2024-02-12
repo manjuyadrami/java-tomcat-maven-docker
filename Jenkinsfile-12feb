@@ -1,0 +1,30 @@
+node(){
+    stage("clone"){
+       checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjuyadrami/java-tomcat-maven-docker.git']])
+       properties([parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: 'master', name: 'https://github.com/manjuyadrami/java-tomcat-maven-docker.git', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition')]), pipelineTriggers([snapshotDependencies()])])    
+    }
+    stage("maven"){
+        sh "pwd"
+        sh "/Users/sarvam/Documents/maven-3.9.6/bin/mvn clean package"
+    }
+    stage("copy artifacts"){
+        
+        sh '''cd /Users/sarvam/.jenkins/workspace/Java_Pipeline100/target
+        cp *.war /Users/sarvam/downloads/apache-tomcat-10.1.17/webapps'''
+    }
+  /**  stage("Start application server"){
+
+           sh '''status_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/myapp/)
+   if [ "$status_code" -eq 200 ] ; then
+        echo "App is working fine $status_code" 
+   else
+       echo "App is not running and starting jenkins"
+      
+    fi
+'''    
+}**/
+stage("verify"){
+sh "chmod 777 statuscode.sh"
+sh "./statuscode.sh"
+}
+}
